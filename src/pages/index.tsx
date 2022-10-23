@@ -1,13 +1,15 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { Main } from '../Components/Main';
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>Home</title>
       </Head>
-    </div>
+      <Main />
+    </>
   );
 };
 
