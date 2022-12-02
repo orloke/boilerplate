@@ -1,6 +1,10 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Main } from '../Components/Main';
+import dynamic from 'next/dynamic';
+
+const Map = dynamic(() => import('../Components/Map'), {
+  ssr: false,
+});
 
 const Home: NextPage = () => {
   return (
@@ -8,7 +12,19 @@ const Home: NextPage = () => {
       <Head>
         <title>Home</title>
       </Head>
-      <Main />
+      <Map
+        places={[
+          {
+            id: '1',
+            name: 'Goiania',
+            slug: 'goiania',
+            location: {
+              latitude: -16.6869,
+              longitude: -49.2648,
+            },
+          },
+        ]}
+      />
     </>
   );
 };
