@@ -6,7 +6,7 @@ const config: CodegenConfig = {
     'https://api-sa-east-1.hygraph.com/v2/clb78s8sr0i3a01um2b2k4l0z/master',
   documents: ['./src/graphql/**/*.graphql'],
   generates: {
-    './src/generated.tsx': {
+    './src/graphql/generated.tsx': {
       plugins: [
         'typescript',
         'typescript-operations',

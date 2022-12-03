@@ -3379,7 +3379,9 @@ export enum _SystemDateTimeFieldVariation {
   Localization = 'localization',
 }
 
-export type GetPagesQueryVariables = Exact<{ [key: string]: never }>;
+export type GetPagesQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['Int']>;
+}>;
 
 export type GetPagesQuery = {
   __typename?: 'Query';
@@ -3392,9 +3394,24 @@ export type GetPagesQuery = {
   }>;
 };
 
+export type GetPageBySlugQueryVariables = Exact<{
+  slug: Scalars['String'];
+}>;
+
+export type GetPageBySlugQuery = {
+  __typename?: 'Query';
+  page?: {
+    __typename?: 'Page';
+    id: string;
+    slug: string;
+    heading: string;
+    body: { __typename?: 'RichText'; html: string };
+  } | null;
+};
+
 export const GetPagesDocument = gql`
-  query getPages {
-    pages {
+  query getPages($first: Int) {
+    pages(first: $first) {
       heading
       id
       slug
@@ -3417,6 +3434,7 @@ export const GetPagesDocument = gql`
  * @example
  * const { data, loading, error } = useGetPagesQuery({
  *   variables: {
+ *      first: // value for 'first'
  *   },
  * });
  */
@@ -3448,4 +3466,67 @@ export type GetPagesLazyQueryHookResult = ReturnType<
 export type GetPagesQueryResult = Apollo.QueryResult<
   GetPagesQuery,
   GetPagesQueryVariables
+>;
+export const GetPageBySlugDocument = gql`
+  query getPageBySlug($slug: String!) {
+    page(where: { slug: $slug }) {
+      id
+      slug
+      heading
+      body {
+        html
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetPageBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetPageBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPageBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPageBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetPageBySlugQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetPageBySlugQuery,
+    GetPageBySlugQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetPageBySlugQuery, GetPageBySlugQueryVariables>(
+    GetPageBySlugDocument,
+    options,
+  );
+}
+export function useGetPageBySlugLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetPageBySlugQuery,
+    GetPageBySlugQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetPageBySlugQuery, GetPageBySlugQueryVariables>(
+    GetPageBySlugDocument,
+    options,
+  );
+}
+export type GetPageBySlugQueryHookResult = ReturnType<
+  typeof useGetPageBySlugQuery
+>;
+export type GetPageBySlugLazyQueryHookResult = ReturnType<
+  typeof useGetPageBySlugLazyQuery
+>;
+export type GetPageBySlugQueryResult = Apollo.QueryResult<
+  GetPageBySlugQuery,
+  GetPageBySlugQueryVariables
 >;
