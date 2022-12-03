@@ -7,8 +7,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>My Trips</title>
+        {/* icone que aparece na aba */}
         <link rel="shortcut icon" href="/img/icon-512.png" />
-        <link rel="apple-touch-icon" href="/img/icon-512.png" />
+        {/* icone do pwa */}
+        {/* <link rel="apple-touch-icon" href="/img/icon-512.png" /> */}
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#06092b" />
         <meta
