@@ -2,7 +2,7 @@ import * as S from './styles';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 import { LinkWrapper } from '../../Components/LinkWrapper';
 
-export function AboutTemplate() {
+export function PageTemplate() {
   return (
     <S.Content>
       <LinkWrapper href="/">

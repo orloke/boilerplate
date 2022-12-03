@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   z-index: 1200;
   top: var(--medium);
   right: var(--medium);
-  color: var(--white);
+  color: green;
   cursor: pointer;
   svg {
     transition: color 0.3s ease-in-out;

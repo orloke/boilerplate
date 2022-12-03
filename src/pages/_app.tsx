@@ -1,6 +1,8 @@
+import { ApolloProvider } from '@apollo/client';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { GlobalStyles } from '../../styles/global';
+import { client } from '../graphql/apollo';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -19,7 +21,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <GlobalStyles />
-      <Component {...pageProps} />
+      <ApolloProvider client={client}>
+        <Component {...pageProps} />
+      </ApolloProvider>
     </>
   );
 }
