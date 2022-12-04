@@ -1,10 +1,14 @@
 import { PageTemplate } from '../Templates/Pages';
 import { client } from '../graphql/apollo';
-import { GET_PAGES, GET_PAGES_BY_SLYG } from '../graphql/pages/queries';
 import { useRouter } from 'next/router';
 import { GetStaticProps } from 'next';
 import { PageTemplateProps } from '../types/types';
-import { GetPageBySlugQuery, GetPagesQuery } from '../graphql/generated';
+import {
+  GetPageBySlugDocument,
+  GetPageBySlugQuery,
+  GetPagesDocument,
+  GetPagesQuery,
+} from '../graphql/generated';
 
 export default function Page({ heading, body }: PageTemplateProps) {
   const router = useRouter();
@@ -16,7 +20,7 @@ export default function Page({ heading, body }: PageTemplateProps) {
 
 export const getStaticPaths = async () => {
   const { data } = await client.query<GetPagesQuery>({
-    query: GET_PAGES,
+    query: GetPagesDocument,
     variables: {
       first: 3,
     },
@@ -26,25 +30,24 @@ export const getStaticPaths = async () => {
     params: { slug },
   }));
 
-  console.log(paths);
-
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = await client.query<GetPageBySlugQuery>({
-    query: GET_PAGES_BY_SLYG,
+    query: GetPageBySlugDocument,
     variables: {
       slug: `${params?.slug}`,
     },
   });
 
-  // if (!data.pages) return { notFound: true };
+  if (!data.page) return { notFound: true };
 
   return {
     props: {
       heading: data.page?.heading,
       body: data.page?.body.html,
     },
+    revalidate: 20,
   };
 };

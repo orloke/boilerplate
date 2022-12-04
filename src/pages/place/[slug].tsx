@@ -1,0 +1,51 @@
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import { client } from '../../graphql/apollo';
+import {
+  GetPlaceBySlugDocument,
+  GetPlaceBySlugQuery,
+  GetPlacesDocument,
+  GetPlacesQuery,
+} from '../../graphql/generated';
+import { PlaceTemplate } from '../../Templates/Places';
+import { PlaceTemplateProps } from '../../types/types';
+
+export default function Place({ place }: PlaceTemplateProps) {
+  const router = useRouter();
+
+  if (router.isFallback) return <div>Loading</div>;
+
+  return <PlaceTemplate place={place} />;
+}
+
+export const getStaticPaths = async () => {
+  const { data } = await client.query<GetPlacesQuery>({
+    query: GetPlacesDocument,
+    variables: {
+      first: 3,
+    },
+  });
+
+  const paths = data.places.map(({ slug }) => ({
+    params: { slug },
+  }));
+
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { data } = await client.query<GetPlaceBySlugQuery>({
+    query: GetPlaceBySlugDocument,
+    variables: {
+      slug: `${params?.slug}`,
+    },
+  });
+
+  if (!data.place) return { notFound: true };
+
+  return {
+    props: {
+      place: data.place,
+    },
+  };
+};

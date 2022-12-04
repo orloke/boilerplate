@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { GlobalStyles } from '../../styles/global';
 import { client } from '../graphql/apollo';
+import NextNProgress from 'nextjs-progressbar';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,6 +19,13 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <GlobalStyles />
+      <NextNProgress
+        color="green"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={3}
+        showOnShallow={true}
+      />
       <ApolloProvider client={client}>
         <Component {...pageProps} />
       </ApolloProvider>

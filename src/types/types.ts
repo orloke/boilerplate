@@ -13,6 +13,24 @@ type Place = {
   };
 };
 
+type Galery = {
+  height: number;
+  width: number;
+  url: string;
+};
+
+export type PlaceTemplateProps = {
+  place: {
+    id: string;
+    name: string;
+    slug: string;
+    description: {
+      html: string;
+    };
+    galery: Galery[];
+  };
+};
+
 export type MapProps = {
   places: Place[];
 };
