@@ -4,7 +4,6 @@ export type PageTemplateProps = {
 };
 
 type Place = {
-  id: string;
   name: string;
   slug: string;
   location: {
@@ -14,14 +13,11 @@ type Place = {
 };
 
 type Galery = {
-  height: number;
-  width: number;
   url: string;
 };
 
 export type PlaceTemplateProps = {
   place: {
-    id: string;
     name: string;
     slug: string;
     description: {
