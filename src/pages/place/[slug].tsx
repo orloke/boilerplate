@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import { client } from '../../graphql/apollo';
 import {
@@ -15,7 +16,12 @@ export default function Place({ place }: PlaceTemplateProps) {
 
   if (router.isFallback) return <div>Loading</div>;
 
-  return <PlaceTemplate place={place} />;
+  return (
+    <>
+      <NextSeo title={place.name} description={place.description.text} />
+      <PlaceTemplate place={place} />
+    </>
+  );
 }
 
 export const getStaticPaths = async () => {

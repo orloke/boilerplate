@@ -36,6 +36,7 @@ query getPlaceBySlug($slug: String) {
   place(where: {slug: $slug}) {
     description {
       html
+      text
     }
     galery {
       height

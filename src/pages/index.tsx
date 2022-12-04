@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import { client } from '../graphql/apollo';
 import { GetPlacesDocument, GetPlacesQuery } from '../graphql/generated';
 import { HomeTemplate } from '../Templates/Home';
@@ -7,9 +7,11 @@ import { MapProps } from '../types/types';
 const Home = ({ places }: MapProps) => {
   return (
     <>
-      <Head>
-        <title>Home</title>
-      </Head>
+      <NextSeo
+        title="My trips"
+        description="A simple project to show in a map some places."
+        canonical="https://my-trips.orloke.com.br"
+      />
       <HomeTemplate places={places} />
     </>
   );

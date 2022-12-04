@@ -9,13 +9,19 @@ import {
   GetPagesDocument,
   GetPagesQuery,
 } from '../graphql/generated';
+import { NextSeo } from 'next-seo';
 
 export default function Page({ heading, body }: PageTemplateProps) {
   const router = useRouter();
 
   if (router.isFallback) return null;
 
-  return <PageTemplate heading={heading} body={body} />;
+  return (
+    <>
+      <NextSeo title={heading} />
+      <PageTemplate heading={heading} body={body} />
+    </>
+  );
 }
 
 export const getStaticPaths = async () => {

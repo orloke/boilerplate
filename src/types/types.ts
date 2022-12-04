@@ -26,6 +26,7 @@ export type PlaceTemplateProps = {
     slug: string;
     description: {
       html: string;
+      text: string;
     };
     galery: Galery[];
   };

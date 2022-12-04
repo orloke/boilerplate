@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  position: fixed;
+  position: absolute;
   z-index: 1200;
   top: var(--medium);
   right: var(--medium);
