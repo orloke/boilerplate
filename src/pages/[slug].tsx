@@ -1,4 +1,4 @@
-import { PageTemplate } from '../Templates/Page';
+import { PageTemplate } from '../Templates/Pages';
 import { client } from '../graphql/apollo';
 import { GET_PAGES, GET_PAGES_BY_SLYG } from '../graphql/pages/queries';
 import { useRouter } from 'next/router';

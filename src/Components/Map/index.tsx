@@ -1,19 +1,6 @@
 import { TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapProps } from '../../types/types';
 import * as S from './styles';
-
-type Place = {
-  id: string;
-  name: string;
-  slug: string;
-  location: {
-    latitude: number;
-    longitude: number;
-  };
-};
-
-export type MapProps = {
-  places?: Place[];
-};
 
 export default function Map({ places }: MapProps) {
   return (
