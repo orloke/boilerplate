@@ -25,6 +25,7 @@ export const getStaticProps = async () => {
   });
 
   return {
+    revalidate: 5,
     props: {
       places: data.places,
     },

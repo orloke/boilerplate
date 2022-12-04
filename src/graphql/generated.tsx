@@ -4115,6 +4115,7 @@ export type GetPlacesQuery = {
   __typename?: 'Query';
   places: Array<{
     __typename?: 'Place';
+    id: string;
     name: string;
     slug: string;
     location: { __typename?: 'Location'; latitude: number; longitude: number };
@@ -4262,6 +4263,7 @@ export type GetPageBySlugQueryResult = Apollo.QueryResult<
 export const GetPlacesDocument = gql`
   query getPlaces($first: Int) {
     places(first: $first) {
+      id
       name
       location {
         latitude

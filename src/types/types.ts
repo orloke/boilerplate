@@ -4,6 +4,7 @@ export type PageTemplateProps = {
 };
 
 type Place = {
+  id: string;
   name: string;
   slug: string;
   location: {

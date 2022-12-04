@@ -14,7 +14,7 @@ import { PlaceTemplateProps } from '../../types/types';
 export default function Place({ place }: PlaceTemplateProps) {
   const router = useRouter();
 
-  if (router.isFallback) return <div>Loading</div>;
+  if (router.isFallback) return null;
 
   return (
     <>
@@ -50,6 +50,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   if (!data.place) return { notFound: true };
 
   return {
+    revalidate: 5,
     props: {
       place: data.place,
     },
