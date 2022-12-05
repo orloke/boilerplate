@@ -22,6 +22,9 @@ export default Home;
 export const getStaticProps = async () => {
   const { data } = await client.query<GetPlacesQuery>({
     query: GetPlacesDocument,
+    variables: {
+      first: 100,
+    },
     fetchPolicy: 'no-cache',
   });
 
