@@ -36,7 +36,7 @@ export const getStaticPaths = async () => {
     params: { slug },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -45,8 +45,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables: {
       slug: `${params?.slug}`,
     },
+    fetchPolicy: 'no-cache',
   });
-
   if (!data.place) return { notFound: true };
 
   return {

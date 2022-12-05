@@ -27,16 +27,13 @@ export default function Page({ heading, body }: PageTemplateProps) {
 export const getStaticPaths = async () => {
   const { data } = await client.query<GetPagesQuery>({
     query: GetPagesDocument,
-    variables: {
-      first: 3,
-    },
   });
 
   const paths = data.pages.map(({ slug }) => ({
     params: { slug },
   }));
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -45,6 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     variables: {
       slug: `${params?.slug}`,
     },
+    fetchPolicy: 'no-cache',
   });
 
   if (!data.page) return { notFound: true };
