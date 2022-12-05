@@ -1,10 +1,16 @@
 import { NextSeo } from 'next-seo';
+import { useEffect } from 'react';
+import useAppData from '../data/useAppContext';
 import { client } from '../graphql/apollo';
 import { GetPlacesDocument, GetPlacesQuery } from '../graphql/generated';
 import { HomeTemplate } from '../Templates/Home';
 import { MapProps } from '../types/types';
 
 const Home = ({ places }: MapProps) => {
+  const { setPlace } = useAppData();
+  useEffect(() => {
+    setPlace(places);
+  }, [places, setPlace]);
   return (
     <>
       <NextSeo
@@ -12,7 +18,7 @@ const Home = ({ places }: MapProps) => {
         description="A simple project to show in a map some places."
         canonical="https://my-trips.orloke.com.br"
       />
-      <HomeTemplate places={places} />
+      <HomeTemplate />
     </>
   );
 };

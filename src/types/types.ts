@@ -3,7 +3,7 @@ export type PageTemplateProps = {
   body: string;
 };
 
-type Place = {
+export type Place = {
   id: string;
   name: string;
   slug: string;

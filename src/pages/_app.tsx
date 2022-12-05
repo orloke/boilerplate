@@ -7,6 +7,7 @@ import NextNProgress from 'nextjs-progressbar';
 
 import SEO from '../../next-seo.config';
 import { DefaultSeo } from 'next-seo';
+import { AppProvider } from '../data/AppContext';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -26,7 +27,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       />
       <DefaultSeo {...SEO} />
       <ApolloProvider client={client}>
-        <Component {...pageProps} />
+        <AppProvider>
+          <Component {...pageProps} />
+        </AppProvider>
       </ApolloProvider>
     </>
   );
