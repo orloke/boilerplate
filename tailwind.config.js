@@ -12,6 +12,7 @@ module.exports = {
       },
       colors: {
         blueMarker: '#4895d2',
+        darkColor: '#030518',
       },
       maxWidth: {
         80: '80vw',
@@ -19,7 +20,21 @@ module.exports = {
       fontSize: {
         '5rem': '5rem',
       },
+      keyframes: {
+        placeholderShimmer: {
+          '0%': {
+            'background-position': '-40rem 0',
+          },
+          '100%': {
+            'background-position': '40rem 0',
+          },
+        },
+      },
+      animation: {
+        placeholderShimmer: 'placeholderShimmer 1s linear infinite forwards',
+      },
     },
   },
   plugins: [],
+  darkMode: 'class',
 };
