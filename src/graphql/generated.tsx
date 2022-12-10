@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
@@ -87,6 +86,7 @@ export type AssetCreatedAtArgs = {
 
 /** Asset system model */
 export type AssetCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -102,6 +102,7 @@ export type AssetGaleryPlaceArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<PlaceOrderByInput>;
@@ -129,6 +130,7 @@ export type AssetPublishedAtArgs = {
 
 /** Asset system model */
 export type AssetPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -137,6 +139,7 @@ export type AssetScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -150,6 +153,7 @@ export type AssetUpdatedAtArgs = {
 
 /** Asset system model */
 export type AssetUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1344,7 +1348,7 @@ export type Node = {
 
 export type Page = Node & {
   __typename?: 'Page';
-  body: RichText;
+  body?: Maybe<RichText>;
   /** The time the document was created */
   createdAt: Scalars['DateTime'];
   /** User that created this document */
@@ -1371,6 +1375,7 @@ export type Page = Node & {
 };
 
 export type PageCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1387,6 +1392,7 @@ export type PageHistoryArgs = {
 };
 
 export type PagePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1394,6 +1400,7 @@ export type PageScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -1401,6 +1408,7 @@ export type PageScheduledInArgs = {
 };
 
 export type PageUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1422,7 +1430,7 @@ export type PageConnection = {
 };
 
 export type PageCreateInput = {
-  body: Scalars['RichTextAST'];
+  body?: InputMaybe<Scalars['RichTextAST']>;
   createdAt?: InputMaybe<Scalars['DateTime']>;
   heading: Scalars['String'];
   slug: Scalars['String'];
@@ -1856,6 +1864,7 @@ export type Place = Node & {
 };
 
 export type PlaceCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1869,6 +1878,7 @@ export type PlaceGaleryArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<AssetOrderByInput>;
@@ -1883,6 +1893,7 @@ export type PlaceHistoryArgs = {
 };
 
 export type PlacePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -1890,6 +1901,7 @@ export type PlaceScheduledInArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -1897,6 +1909,7 @@ export type PlaceScheduledInArgs = {
 };
 
 export type PlaceUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -2638,6 +2651,7 @@ export type ScheduledOperationAffectedDocumentsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   skip?: InputMaybe<Scalars['Int']>;
@@ -2645,6 +2659,7 @@ export type ScheduledOperationAffectedDocumentsArgs = {
 
 /** Scheduled Operation system model */
 export type ScheduledOperationCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -2657,16 +2672,19 @@ export type ScheduledOperationDocumentInStagesArgs = {
 
 /** Scheduled Operation system model */
 export type ScheduledOperationPublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 /** Scheduled Operation system model */
 export type ScheduledOperationReleaseArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 /** Scheduled Operation system model */
 export type ScheduledOperationUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -3046,6 +3064,7 @@ export type ScheduledRelease = Node & {
 
 /** Scheduled Release system model */
 export type ScheduledReleaseCreatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -3061,6 +3080,7 @@ export type ScheduledReleaseOperationsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   last?: InputMaybe<Scalars['Int']>;
   locales?: InputMaybe<Array<Locale>>;
   orderBy?: InputMaybe<ScheduledOperationOrderByInput>;
@@ -3070,11 +3090,13 @@ export type ScheduledReleaseOperationsArgs = {
 
 /** Scheduled Release system model */
 export type ScheduledReleasePublishedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
 /** Scheduled Release system model */
 export type ScheduledReleaseUpdatedByArgs = {
+  forceParentLocale?: InputMaybe<Scalars['Boolean']>;
   locales?: InputMaybe<Array<Locale>>;
 };
 
@@ -4090,7 +4112,7 @@ export type GetPagesQuery = {
     __typename?: 'Page';
     heading: string;
     slug: string;
-    body: { __typename?: 'RichText'; html: string };
+    body?: { __typename?: 'RichText'; html: string } | null;
   }>;
 };
 
@@ -4104,7 +4126,7 @@ export type GetPageBySlugQuery = {
     __typename?: 'Page';
     slug: string;
     heading: string;
-    body: { __typename?: 'RichText'; html: string };
+    body?: { __typename?: 'RichText'; html: string } | null;
   } | null;
 };
 
@@ -4140,6 +4162,23 @@ export type GetPlaceBySlugQuery = {
     } | null;
     galery: Array<{ __typename?: 'Asset'; url: string }>;
   } | null;
+};
+
+export type PostPageMutationVariables = Exact<{
+  slug: Scalars['String'];
+  heading: Scalars['String'];
+  body?: InputMaybe<Scalars['RichTextAST']>;
+}>;
+
+export type PostPageMutation = {
+  __typename?: 'Mutation';
+  createPage?: {
+    __typename?: 'Page';
+    id: string;
+    heading: string;
+    stage: Stage;
+  } | null;
+  publishPage?: { __typename?: 'Page'; id: string; stage: Stage } | null;
 };
 
 export const GetPagesDocument = gql`
@@ -4388,4 +4427,59 @@ export type GetPlaceBySlugLazyQueryHookResult = ReturnType<
 export type GetPlaceBySlugQueryResult = Apollo.QueryResult<
   GetPlaceBySlugQuery,
   GetPlaceBySlugQueryVariables
+>;
+export const PostPageDocument = gql`
+  mutation PostPage($slug: String!, $heading: String!, $body: RichTextAST) {
+    createPage(data: { heading: $heading, slug: $slug, body: $body }) {
+      id
+      heading
+      stage
+    }
+    publishPage(where: { slug: $slug }) {
+      id
+      stage
+    }
+  }
+`;
+export type PostPageMutationFn = Apollo.MutationFunction<
+  PostPageMutation,
+  PostPageMutationVariables
+>;
+
+/**
+ * __usePostPageMutation__
+ *
+ * To run a mutation, you first call `usePostPageMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `usePostPageMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [postPageMutation, { data, loading, error }] = usePostPageMutation({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *      heading: // value for 'heading'
+ *      body: // value for 'body'
+ *   },
+ * });
+ */
+export function usePostPageMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    PostPageMutation,
+    PostPageMutationVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<PostPageMutation, PostPageMutationVariables>(
+    PostPageDocument,
+    options,
+  );
+}
+export type PostPageMutationHookResult = ReturnType<typeof usePostPageMutation>;
+export type PostPageMutationResult = Apollo.MutationResult<PostPageMutation>;
+export type PostPageMutationOptions = Apollo.BaseMutationOptions<
+  PostPageMutation,
+  PostPageMutationVariables
 >;

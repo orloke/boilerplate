@@ -1,14 +1,10 @@
 import { CloseOutline } from '@styled-icons/evaicons-outline';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { LinkWrapper } from '../../Components/LinkWrapper';
 import { PlaceTemplateProps } from '../../types/types';
 import * as S from './styles';
 
 export function PlaceTemplate({ place }: PlaceTemplateProps) {
-  const router = useRouter();
-
-  if (router.isFallback) return <div>loading...</div>;
   return (
     <>
       <LinkWrapper href="/">

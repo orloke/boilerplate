@@ -43,3 +43,31 @@ query getPlaceBySlug($slug: String) {
     slug
   }
 }
+
+mutation PostPage($slug: String!, $heading: String!, $body: RichTextAST) {
+  createPage(
+    data: {heading: $heading, slug: $slug, body:$body }
+  ) {
+    id
+    heading
+    stage
+  }
+  publishPage(where: {slug: $slug}) {
+    id
+    stage
+  }
+}
+
+
+# mutation PostPage {
+#   createPage(
+#     data: {heading: "kkk", slug: "lm", body: {children: [{type: "paragraph", children: [{text: "Hygraph boasts an impressive collection of "}]}]}}
+#   ) {
+#     id
+#     heading
+#     stage
+#   }
+#   publishPage(where: {slug: "lm"}) {
+#     id
+#   }
+# }

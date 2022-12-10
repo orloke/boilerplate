@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import * as S from './styles';
 
 type LinkWrapperProps = {
   href: string;
@@ -8,8 +7,8 @@ type LinkWrapperProps = {
 
 export function LinkWrapper(props: LinkWrapperProps) {
   return (
-    <S.Wrapper>
+    <div className="absolute z-1200 text-blueMarker right-8 top-8 hover:brightness-125 cursor-pointer">
       <Link href={props.href}>{props.children}</Link>
-    </S.Wrapper>
+    </div>
   );
 }

@@ -1,18 +1,19 @@
-import * as S from './styles';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
+
 import { LinkWrapper } from '../../Components/LinkWrapper';
 import { PageTemplateProps } from '../../types/types';
 
 export function PageTemplate({ heading, body }: PageTemplateProps) {
   return (
-    <S.Content>
+    <div className="h-full max-w-80 flex justify-center flex-col items-center mx-auto">
       <LinkWrapper href="/">
         <CloseOutline size={32} />
       </LinkWrapper>
-      <S.Heading>{heading}</S.Heading>
-      <S.Body>
-        <div dangerouslySetInnerHTML={{ __html: body }} />
-      </S.Body>
-    </S.Content>
+      <h1 className="text-5rem">{heading}</h1>
+      <div
+        className="text-2xl text-justify"
+        dangerouslySetInnerHTML={{ __html: body }}
+      />
+    </div>
   );
 }

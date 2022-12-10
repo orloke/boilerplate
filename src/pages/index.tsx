@@ -2,7 +2,12 @@ import { NextSeo } from 'next-seo';
 import { useEffect } from 'react';
 import useAppData from '../data/useAppContext';
 import { client } from '../graphql/apollo';
-import { GetPlacesDocument, GetPlacesQuery } from '../graphql/generated';
+import {
+  GetPlacesDocument,
+  GetPlacesQuery,
+  PostPageDocument,
+  PostPageMutation,
+} from '../graphql/generated';
 import { HomeTemplate } from '../Templates/Home';
 import { MapProps } from '../types/types';
 
@@ -33,6 +38,19 @@ export const getStaticProps = async () => {
     },
     fetchPolicy: 'no-cache',
   });
+
+  // const postPage = await client.mutate<PostPageMutation>({
+  //   mutation: PostPageDocument,
+  //   variables: {
+  //     slug: 'seila1235',
+  //     heading: 'olá',
+  //     body: {
+  //       children: [{ type: 'paragraph', children: [{ text: 'olá a todos' }] }],
+  //     },
+  //   },
+  // });
+
+  // console.log(postPage);
 
   return {
     revalidate: 5,
