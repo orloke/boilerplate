@@ -9,7 +9,7 @@ export function PageTemplate({ heading, body }: PageTemplateProps) {
       <LinkWrapper href="/">
         <CloseOutline size={32} />
       </LinkWrapper>
-      <S.Heading>{heading}</S.Heading>
+      <S.Heading>{heading} oi</S.Heading>
       <S.Body>
         <div dangerouslySetInnerHTML={{ __html: body }} />
       </S.Body>
