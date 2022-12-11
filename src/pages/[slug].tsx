@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     revalidate: 5,
     props: {
       heading: data.page?.heading,
-      body: data.page?.body?.html,
+      body: data.page?.body.html,
     },
   };
 };
